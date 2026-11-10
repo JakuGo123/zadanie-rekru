@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Kolor i forma w nowym świetle. Odwzorowanie strony SOLLUX — zadanie rekrutacyjne.">
+    <meta name="theme-color" content="#aa7955">
+    <title>SOLLUX — Kolor i forma w nowym świetle</title>
+    <link rel="icon" href="assets/favicon.png">
+    <link rel="preload" href="assets/red-hat-display.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/hero-lamps.webp" as="image" media="(min-width: 701px)">
+    <link rel="preload" href="assets/lampa1.png" as="image">
+    <link rel="preload" href="assets/lampa2.png" as="image">
+    <link rel="preload" href="assets/lampa3.png" as="image">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer>
+    </script>
+    <script src="shader.js" defer>
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <circle cx="10.5" cy="10.5" r="6.5"/>
+        <path d="m16 16 5 5"/>
+      </symbol>
+      <symbol id="i-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M4 22v-3a8 8 0 0 1 16 0v3"/>
+      </symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24">
+        <path d="M2 3h3l3 13h11l3-10H6"/>
+        <circle cx="9" cy="21" r="1"/>
+        <circle cx="18" cy="21" r="1"/>
+      </symbol>
+      <symbol id="i-cube" viewBox="0 0 24 24">
+        <path d="m12 2 9 5v10l-9 5-9-5V7Zm0 10 9-5M12 12 3 7m9-5v10m0 0v10"/>
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14m-6-6 6 6-6 6"/>
+      </symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24">
+        <path d="m6 9 6 6 6-6"/>
+      </symbol>
+      <symbol id="i-return" viewBox="0 0 24 24">
+        <path d="M19 5v7H5m4-4-4 4 4 4"/>
+      </symbol>
+      <symbol id="i-warranty" viewBox="0 0 24 24">
+        <path d="M6 3h12v19l-6-4-6 4Z"/>
+      </symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24">
+        <path d="M2 4h13v14H2Zm13 5h4l3 5v4h-7m1-8v4h6"/>
+        <circle cx="6" cy="19" r="2"/>
+        <circle cx="18" cy="19" r="2"/>
+      </symbol>
+      <symbol id="i-polish" viewBox="0 0 24 24">
+        <path d="m12 2-8 4v13l8 3 8-4V6h-8Zm0 0v15l-8 2m8-2 4-2V6"/>
+      </symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24">
+        <path d="M7 3h10v6a5 5 0 0 1-10 0Zm0 1H3v3a4 4 0 0 0 4 4m10-7h4v3a4 4 0 0 1-4 4m-5 3v5m-5 3h10v-3H7Z"/>
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path d="m5 5 14 14M5 19 19 5"/>
+      </symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24">
+        <path d="M8 5v14M16 5v14"/>
+      </symbol>
+      <symbol id="i-play" viewBox="0 0 24 24">
+        <path d="m8 4 12 8-12 8Z"/>
+      </symbol>
+    </svg>
+    <header class="site-header">
+      <div class="header-inner container">
+        <a class="brand tone" href="./" aria-label="SOLLUX — strona główna">
+          <img src="assets/logo.svg" alt="SOLLUX" width="152" height="26">
+        </a>
+        <button class="icon-button mobile-toggle tone" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navigation">
+          <svg>
+            <use href="#i-menu"/>
+          </svg>
+        </button>
+        <nav class="navigation" id="navigation" aria-label="Menu główne">
+          <div class="nav-group">
+            <button class="nav-trigger tone" aria-expanded="false" aria-controls="lamps-menu">Lampy <svg>
+              <use href="#i-chevron"/>
+            </svg>
+          </button>
+          <div class="dropdown" id="lamps-menu" hidden>
+            <a href="https://sollux.pl/plafony">Lampy sufitowe</a>
+            <a href="https://sollux.pl/pl/menu/lampy-wiszace-158">Lampy wiszące</a>
+            <a href="https://sollux.pl/pl/menu/kinkiety-152">Kinkiety</a>
+            <a href="https://sollux.pl/pl/menu/bestsellery-827">Wszystkie bestsellery</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button class="nav-trigger tone" aria-expanded="false" aria-controls="colors-menu">Kolory <svg>
+            <use href="#i-chevron"/>
+          </svg>
+        </button>
+        <div class="dropdown" id="colors-menu" hidden>
+          <a href="https://sollux.pl/pl/search?text=czarna">Czarny</a>
+          <a href="https://sollux.pl/pl/search?text=biala">Biały</a>
+          <a href="https://sollux.pl/pl/search?text=zielona">Zielony</a>
+          <a href="https://sollux.pl/pl/search?text=terakota">Terakota</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-trigger tone" aria-expanded="false" aria-controls="rooms-menu">Pomieszczenia <svg>
+          <use href="#i-chevron"/>
+        </svg>
+      </button>
+      <div class="dropdown" id="rooms-menu" hidden>
+        <a href="https://sollux.pl/pl/search?text=salon">Salon</a>
+        <a href="https://sollux.pl/pl/search?text=sypialnia">Sypialnia</a>
+        <a href="https://sollux.pl/pl/search?text=kuchnia">Kuchnia</a>
+        <a href="https://sollux.pl/pl/search?text=lazienka">Łazienka</a>
+      </div>
+    </div>
+    <a class="tone" href="https://sollux.pl/pl/menu/nowosci-188">Nowości</a>
+    <a class="tone" href="https://sollux.pl/pl/menu/bestsellery-827">Bestsellery</a>
+    <a class="tone" href="https://sollux.pl/promotions.php">Promocje</a>
+  </nav>
+  <form class="search" role="search" action="https://sollux.pl/pl/search" method="get">
+    <label class="sr-only" for="search">Czego szukasz?</label>
+    <input id="search" name="text" placeholder="Czego szukasz?" required autocomplete="off">
+    <button class="tone" aria-label="Szukaj">
+      <svg>
+        <use href="#i-search"/>
+      </svg>
+    </button>
+  </form>
+  <a class="configure-link tone" href="https://sollux.pl/konfigurator">
+    <svg>
+      <use href="#i-cube"/>
+    </svg>
+    <span>Stwórz swoją lampę</span>
+  </a>
+  <a class="icon-button tone" href="https://sollux.pl/pl/login.html" aria-label="Moje konto">
+    <svg>
+      <use href="#i-user"/>
+    </svg>
+  </a>
+  <a class="icon-button tone" href="https://sollux.pl/pl/basketedit.html" aria-label="Koszyk">
+    <svg>
+      <use href="#i-cart"/>
+    </svg>
+  </a>
+</div>
+</header>
+<main id="main">
+  <section class="hero" aria-roledescription="karuzela" aria-label="Odkryj oświetlenie SOLLUX">
+    <div class="slide is-active" data-slide="0" role="group" aria-roledescription="slajd" aria-label="1 z 2 — Kolor i forma">
+      <div class="slide-zoom">
+        <div class="lamp-scene">
+          <picture class="hero-rock" aria-hidden="true">
+            <source media="(max-width: 700px)" srcset="assets/hero-lamps-mobile.webp">
+            <img class="hero-image" src="assets/hero-lamps.webp" alt="" width="1920" height="1080" fetchpriority="high">
+          </picture>
+          <button class="lamp lamp-sand" aria-label="Włącz beżową lampę" aria-pressed="false" data-color="beżową" data-depth="0.8">
+            <span class="lamp-visual">
+              <img src="assets/lampa1.png" alt="" width="372" height="419" draggable="false">
+              <span class="lamp-light"></span>
+            </span>
+          </button>
+          <button class="lamp lamp-clay" aria-label="Włącz czerwoną lampę" aria-pressed="false" data-color="czerwoną" data-depth="1.2">
+            <span class="lamp-visual">
+              <img src="assets/lampa3.png" alt="" width="423" height="393" draggable="false">
+              <span class="lamp-light"></span>
+            </span>
+          </button>
+          <button class="lamp lamp-olive" aria-label="Włącz zieloną lampę" aria-pressed="false" data-color="zieloną" data-depth="-0.6">
+            <span class="lamp-visual">
+              <img src="assets/lampa2.png" alt="" width="470" height="428" draggable="false">
+              <span class="lamp-light"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="hero-copy container">
+        <p>Bestsellery SOLLUX</p>
+        <h1>Kolor i forma<br>w nowym świetle</h1>
+        <a class="button button-yellow" href="https://sollux.pl/pl/menu/bestsellery-827">Sprawdź bestsellery</a>
+      </div>
+    </div>
+    <div class="slide slide-interior" data-slide="1" role="group" aria-roledescription="slajd" aria-label="2 z 2 — Światło w Twoim stylu" aria-hidden="true" inert>
+      <div class="slide-zoom">
+        <picture>
+          <source media="(max-width: 700px)" srcset="assets/hero-interior-mobile.webp">
+          <img class="hero-image" src="assets/hero-interior.webp" alt="Przytulne wnętrze z drewnem, granatowymi meblami i oświetleniem SOLLUX" width="1920" height="1080">
+        </picture>
+      </div>
+      <div class="hero-copy container">
+        <p>Światło, które tworzy wnętrze</p>
+        <h2>Twój dom.<br>Twój charakter.</h2>
+        <a class="button button-yellow" href="https://sollux.pl/pl/menu/bestsellery-827">Znajdź swoją lampę</a>
+      </div>
+    </div>
+    <button class="slider-arrow slider-prev" aria-label="Poprzedni slajd">
+      <svg>
+        <use href="#i-arrow"/>
+      </svg>
+    </button>
+    <button class="slider-arrow slider-next" aria-label="Następny slajd">
+      <svg>
+        <use href="#i-arrow"/>
+      </svg>
+    </button>
+    <div class="slider-controls">
+      <div class="pagination" aria-label="Wybierz slajd">
+        <button class="pagination-item is-active" aria-label="Slajd 1 — Kolor i forma" aria-current="true" data-goto="0">
+          <span>
+          </span>
+        </button>
+        <button class="pagination-item" aria-label="Slajd 2 — Twoje wnętrze" data-goto="1">
+          <span>
+          </span>
+        </button>
+      </div>
+      <button class="slider-pause" aria-label="Wstrzymaj zmianę slajdów" aria-pressed="false">
+        <svg>
+          <use href="#i-pause"/>
+        </svg>
+      </button>
+    </div>
+    <div class="rating">
+      <strong>4.8 <span aria-label="gwiazdek">★</span>
+      </strong>
+      <span>Uwielbiany przez klientów</span>
+    </div>
+    <p class="sr-only" id="slider-announcement" aria-live="polite" aria-atomic="true">
+    </p>
+  </section>
+  <section class="benefits container" aria-label="Dlaczego SOLLUX?">
+    <div class="benefit">
+      <svg>
+        <use href="#i-return"/>
+      </svg>
+      <h2>Zwroty nawet do 100 dni</h2>
+      <p>szybkie i proste</p>
+    </div>
+    <div class="benefit">
+      <svg>
+        <use href="#i-warranty"/>
+      </svg>
+      <h2>5 lat gwarancji</h2>
+      <p>na wszystkie produkty</p>
+    </div>
+    <div class="benefit">
+      <svg>
+        <use href="#i-truck"/>
+      </svg>
+      <h2>Darmowa dostawa</h2>
+      <p>już za 299 zł</p>
+    </div>
+    <div class="benefit">
+      <svg>
+        <use href="#i-polish"/>
+      </svg>
+      <h2>Polskie produkty</h2>
+      <p>sprawdzona jakość</p>
+    </div>
+    <div class="benefit">
+      <svg>
+        <use href="#i-trophy"/>
+      </svg>
+      <h2>Oficjalny sklep producenta</h2>
+      <p>gwarancja satysfakcji</p>
+    </div>
+  </section>
+  <section class="tiles container" aria-label="Odkryj więcej z SOLLUX">
+    <a class="tile tile-thoro" href="https://thoro.pl/">
+      <img src="assets/thoro.webp" alt="Kobieta w niebieskim swetrze w designerskim fotelu" width="648" height="518" loading="lazy">
+      <div class="tile-copy">
+        <p>Marka THORO</p>
+        <h2>Poznaj lampy premium</h2>
+        <span class="button button-dark">Odwiedź sklep THORO</span>
+      </div>
+    </a>
+    <a class="tile tile-configurator" href="https://sollux.pl/konfigurator">
+      <img src="assets/configurator.webp" alt="Konfigurator kolorów lampy na ekranie laptopa" width="936" height="518" loading="lazy">
+      <div class="tile-copy">
+        <p>Konfigurator 3D</p>
+        <h2>Wybierz projekt i dostosuj<br>go do swojego wnętrza</h2>
+        <span class="button button-dark">Stwórz swój projekt</span>
+      </div>
+    </a>
+    <a class="tile tile-catalog" href="https://sollux-lighting.com/uploads/sollux_katalog.pdf">
+      <img src="assets/catalog.webp" alt="Katalog lamp SOLLUX wyświetlony na tablecie" width="936" height="518" loading="lazy">
+      <div class="tile-copy">
+        <p>Katalog</p>
+        <h2>Odkryj najnowszy katalog</h2>
+        <span class="button button-dark">Sprawdź katalog</span>
+      </div>
+    </a>
+    <a class="tile tile-smart" href="https://sollux.pl/pl/blog/nie-wiesz-czy-konkretna-lampa-bedzie-pasowac-do-twojego-wnetrza-sprawdz-to-za-darmo-z-aplikacja-sollux-smart">
+      <img src="assets/smart.webp" alt="Wirtualna przymiarka lampy w aplikacji na telefonie" width="648" height="518" loading="lazy">
+      <div class="tile-copy">
+        <p>SOLLUX SMART</p>
+        <h2>Przymierz lampę w aplikacji</h2>
+        <span class="button button-dark">Pobierz aplikację na telefon</span>
+      </div>
+    </a>
+  </section>
+  <section class="light-section" aria-labelledby="light-heading">
+    <canvas id="light-canvas" aria-hidden="true">
+    </canvas>
+    <div class="light-copy">
+      <h2 id="light-heading">Twoje wnętrze zasługuje na<br>wyjątkowe światło</h2>
+      <a class="button button-yellow" href="https://sollux.pl/pl/menu/bestsellery-827">Kup teraz</a>
+      <p>Od 119 zł na oficjalnej stronie<br>producenta SOLLUX</p>
+    </div>
+  </section>
+</main>
+<footer class="footer container">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="./" aria-label="SOLLUX — strona główna">
+        <img src="assets/logo.svg" width="138" height="26" alt="SOLLUX">
+      </a>
+      <div class="socials">
+        <a href="https://www.facebook.com/SolluxLighting" aria-label="Facebook">
+          <svg viewBox="0 0 24 24">
+            <path fill="currentColor" stroke="none" d="M3 3h18v18H3z"/>
+            <path stroke="white" stroke-width="2.5" d="M14 7h-2v14m-3-9h6"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/sollux_lighting/" aria-label="Instagram">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r=".7" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@sollux_lighting" aria-label="TikTok">
+          <svg viewBox="0 0 24 24">
+            <path d="M14 3v13a4 4 0 1 1-4-4m4-9c0 5 4 6 7 6" stroke-width="3"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@solluxlighting" aria-label="YouTube">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor" stroke="none"/>
+            <path d="m10 9 5 3-5 3Z" stroke="none" fill="white"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Informacje i obsługa klienta">
+      <div>
+        <h2>Moje zamówienia</h2>
+        <a href="https://sollux.pl/pl/order-open.html">Status zamówienia</a>
+        <a href="https://sollux.pl/pl/order-open.html">Śledzenie przesyłki</a>
+        <a href="https://sollux.pl/pl/rma-open.html">Chcę zareklamować produkt</a>
+        <a href="https://sollux.pl/pl/client-orders.html?display=returns&amp;exchange=true">Informacje o wymianie</a>
+        <a href="https://sollux.pl/pl/contact">Kontakt</a>
+      </div>
+      <div>
+        <h2>Moje konto</h2>
+        <a href="https://sollux.pl/pl/client-new.html?register">Zarejestruj się</a>
+        <a href="https://sollux.pl/pl/basketedit.html">Koszyk</a>
+        <a href="https://sollux.pl/pl/shoppinglist">Listy zakupowe</a>
+        <a href="https://sollux.pl/pl/products-bought.html">Lista zakupionych produktów</a>
+        <a href="https://sollux.pl/pl/client-orders.html">Historia transakcji</a>
+        <a href="https://sollux.pl/pl/client-rebate.html">Moje rabaty</a>
+      </div>
+      <div>
+        <h2>Regulaminy</h2>
+        <a href="https://sollux.pl/pl/delivery">Sposoby wysyłki</a>
+        <a href="https://sollux.pl/pl/payments">Sposoby płatności</a>
+        <a href="https://sollux.pl/pl/terms">Regulamin sklepu</a>
+        <a href="https://sollux.pl/pl/privacy-and-cookie-notice">Polityka prywatności</a>
+        <a href="https://sollux.pl/pl/privacy-and-cookie-notice">Polityka bezpieczeństwa</a>
+        <button class="cookie-settings">Zmień ustawienia ciasteczek</button>
+      </div>
+      <div>
+        <h2>Informacje</h2>
+        <a href="https://sollux.pl/">O nas</a>
+        <a href="https://sollux.pl/pl/info/faq-39">FAQ</a>
+        <a href="https://sollux.pl/">Kurs światła</a>
+        <a href="https://sollux.pl/pl/blog">Inspiracje</a>
+        <a href="https://thoro.pl/">Marka premium</a>
+        <a href="https://sollux.pl/pl/terms/gwarancja-38.html">Gwarancja</a>
+        <a href="https://sollux.pl/konfigurator">Konfigurator 3D</a>
+      </div>
+      <div>
+        <h2>Współpraca</h2>
+        <a href="https://sollux-lighting.com/wspolpraca/klub-architekta/">Dla Architekta</a>
+        <a href="https://sollux.cloud.arlity.com/architect_zone/product?">Modele 3D</a>
+        <a href="https://sollux-lighting.com/pl/">Dystrybucja</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-partners">
+    <div class="partner-group">
+      <h2>Płatności i dostawy</h2>
+      <div class="payment-logos">
+        <img src="assets/visa.png" alt="Visa">
+        <img src="assets/master.png" alt="Mastercard">
+        <img src="assets/payu.png" alt="PayU">
+        <img src="assets/paypal.png" alt="PayPal">
+        <img src="assets/inpost.png" alt="InPost">
+        <img src="assets/dpd.png" alt="DPD">
+        <img src="assets/paczka.png" alt="Paczka w RUCHu">
+        <img src="assets/dhl.png" alt="DHL">
+        <img src="assets/gls.png" alt="GLS">
+        <img src="assets/pocztaPolska.png" alt="Poczta Polska">
+      </div>
+    </div>
+    <div class="partner-group">
+      <h2>Nagrody</h2>
+      <div class="award-logos">
+        <img src="assets/Dg_icon.jpg" alt="Klienci i sprawdzanie">
+        <img src="assets/orly-oswietlenia.jpg" alt="Orły Oświetlenia">
+        <img src="assets/e-gazele-biznesu-2021.jpg" alt="e-Gazele Biznesu">
+        <img src="assets/solidna-firma-2021.jpg" alt="Solidna Firma">
+        <img src="assets/polska-gwarancja-jakosci.jpg" alt="Polska Gwarancja Jakości">
+        <img src="assets/firma-godna-zaufania.jpg" alt="Firma Godna Zaufania">
+      </div>
+    </div>
+    <div class="partner-group">
+      <h2>Nasze sklepy</h2>
+      <div class="countries">
+        <a class="flag pl" href="https://sollux.pl/" aria-label="Polska">
+        </a>
+        <a class="flag de" href="https://sollux-lighting.com/" aria-label="Niemcy">
+        </a>
+        <a class="flag es" href="https://sollux-lighting.com/" aria-label="Hiszpania">
+        </a>
+        <a class="flag ro" href="https://sollux-lighting.com/" aria-label="Rumunia">
+        </a>
+        <a class="flag fr" href="https://sollux-lighting.com/" aria-label="Francja">
+        </a>
+        <a class="flag gb" href="https://sollux-lighting.com/" aria-label="Wielka Brytania">
+        </a>
+        <a class="flag nl" href="https://sollux-lighting.com/" aria-label="Holandia">
+        </a>
+        <a class="flag se" href="https://sollux-lighting.com/" aria-label="Szwecja">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>
+      <p>W sklepie prezentujemy ceny brutto (z VAT). Stawki VAT dla konsumentów z kraju: Polska.</p>
+      <address>
+        <span>NIP: 6070082443</span>
+        <a href="tel:+48668806323">+48 668 806 323</a>
+        <span>(Pn - Pt 7:00 - 15:00)</span>
+        <a href="mailto:sklep@sollux.pl">sklep@sollux.pl</a>
+        <span>Sollux Lighting Sp. z o.o.</span>
+        <span>Władysława Łokietka 35, 64-840 Budzyń (POLSKA)</span>
+      </address>
+    </div>
+    <img class="idosell" src="assets/idosell.svg" alt="Powered by IdoSell" width="80" height="36">
+  </div>
+</footer>
+<dialog class="cookie-dialog" aria-labelledby="cookie-heading">
+  <button class="dialog-close icon-button" aria-label="Zamknij">
+    <svg>
+      <use href="#i-close"/>
+    </svg>
+  </button>
+  <h2 id="cookie-heading">Ustawienia ciasteczek</h2>
+  <p>Ta demonstracyjna strona nie zapisuje ciasteczek i nie korzysta z analityki ani reklam.</p>
+  <p>Po przejściu do sklepu SOLLUX obowiązują ustawienia tamtego serwisu.</p>
+  <button class="button button-dark dialog-done">Rozumiem</button>
+</dialog>
+</body>
+</html>
